@@ -246,7 +246,8 @@ auto serializeNodeId(
                        .getValue()
                        .str()
                 << ':' << argument.getArgNo() + 1 << ':'
-                << payload.getString("name").getValue().str();
+                << payload.getString("name").getValue().str()
+                << ':' << std::to_string(id);
       } else {
         // There was no debug info available, so the ID doesn't matter
         return std::to_string(id);
@@ -262,7 +263,8 @@ auto serializeNodeId(
                      ->getString("compressed_id")
                      .getValue()
                      .str()
-              << ':' << payload.getString("name").getValue().str();
+              << ':' << payload.getString("name").getValue().str()
+              << ':' << std::to_string(id);
       break;
     }
     default: {
